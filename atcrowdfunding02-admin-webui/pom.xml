@@ -7,4 +7,22 @@
   </parent>
   <artifactId>atcrowdfunding02-admin-webui</artifactId>
   <packaging>war</packaging>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.marin.crowd</groupId>
+  		<artifactId>atcrowdfunding03-admin-component</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<scope>test</scope>
+	</dependency>
+  </dependencies>
 </project>
