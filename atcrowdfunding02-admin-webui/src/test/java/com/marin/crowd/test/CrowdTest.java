@@ -13,11 +13,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.marin.crowd.entity.Admin;
 import com.marin.crowd.mapper.AdminMapper;
+import com.marin.crowd.service.api.AdminService;
 
 //指定 Spring 给 Junit 提供的运行器类 
 @RunWith(SpringJUnit4ClassRunner.class)
 //加载 Spring 配置文件的注解
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml","classpath:spring-persist-tx.xml"})
 public class CrowdTest {
 	
 	@Autowired
@@ -25,6 +26,15 @@ public class CrowdTest {
 	
 	@Autowired
 	private AdminMapper adminMapper;
+	
+	@Autowired
+	private AdminService adminService;
+	
+	@Test
+	public void testService() {
+		Admin admin = new Admin(null,"jerry","123123","jerry","jerry@qq.com",null);
+		adminService.saveAdmin(admin);
+	}
 	
 	@Test
 	public void testMapper() {
