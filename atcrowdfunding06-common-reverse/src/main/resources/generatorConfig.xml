@@ -38,6 +38,6 @@ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://myb
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 数据库表名字和我们的 entity 类对应的映射指定 -->
-		<table tableName="t_admin" domainObjectName="Admin" />
+		<table tableName="t_auth" domainObjectName="Auth" />
 	</context>
 </generatorConfiguration>

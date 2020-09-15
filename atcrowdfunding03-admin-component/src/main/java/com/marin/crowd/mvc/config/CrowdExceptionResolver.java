@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.marin.crowd.exception.AccessForbiddenException;
+import com.marin.crowd.exception.LoginAcctAlreadyInUseException;
+import com.marin.crowd.exception.LoginAcctAlreadyInUseForUpdateException;
+import com.marin.crowd.exception.LoginFailedException;
 import com.marin.crowd.util.CrowdUtil;
 import com.marin.crowd.util.ResultEntity;
 
@@ -28,6 +32,43 @@ public class CrowdExceptionResolver {
 
 		return commonResolve(viewName, exception, request, response);
 	}
+	
+	@ExceptionHandler(value = AccessForbiddenException.class)
+	public ModelAndView resolveAccessForbiddenException(
+			AccessForbiddenException exception,
+			HttpServletRequest request,
+			HttpServletResponse response
+			) throws IOException {
+		
+		String viewName = "admin-login";
+		
+		return commonResolve(viewName, exception, request, response);
+	}
+	
+	@ExceptionHandler(value = LoginAcctAlreadyInUseException.class)
+	public ModelAndView LoginAcctAlreadyInUseException(
+			LoginAcctAlreadyInUseException exception,
+			HttpServletRequest request,
+			HttpServletResponse response
+			) throws IOException {
+		
+		String viewName = "admin-add";
+		
+		return commonResolve(viewName, exception, request, response);
+	}
+	
+	@ExceptionHandler(value = LoginAcctAlreadyInUseForUpdateException.class)
+	public ModelAndView LoginAcctAlreadyInUseForUpdateException(
+			LoginAcctAlreadyInUseException exception,
+			HttpServletRequest request,
+			HttpServletResponse response
+			) throws IOException {
+		
+		String viewName = "system-error";
+		
+		return commonResolve(viewName, exception, request, response);
+	}
+	
 	@ExceptionHandler(value = NullPointerException.class)
 	public ModelAndView resolveNullPointerException(
 			NullPointerException exception, 
@@ -35,6 +76,18 @@ public class CrowdExceptionResolver {
 			HttpServletResponse response) throws IOException {
 		
 		String viewName = "system-error";
+
+		return commonResolve(viewName, exception, request, response);
+	}
+	
+	@ExceptionHandler(value = LoginFailedException.class)
+	public ModelAndView resolveLoginFailedException(
+				LoginFailedException exception,
+				HttpServletRequest request,
+				HttpServletResponse response
+			) throws IOException {
+
+		String viewName = "admin-login";
 
 		return commonResolve(viewName, exception, request, response);
 	}

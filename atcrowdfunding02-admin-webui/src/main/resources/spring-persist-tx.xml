@@ -64,5 +64,7 @@
 		</tx:attributes>	
 
 	</tx:advice>
+	
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 		
 		</beans>

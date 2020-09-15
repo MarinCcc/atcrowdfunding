@@ -19,6 +19,8 @@ public interface AdminMapper {
     int insertSelective(Admin record);
 
     List<Admin> selectByExample(AdminExample example);
+    
+    List<Admin> selectAdminByKeyword(String keyword);
 
     Admin selectByPrimaryKey(Integer id);
 
@@ -29,4 +31,10 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
+
+	void deleteOldRelationship(Integer adminId);
+
+	void insertNewRelationship(@Param("adminId")Integer adminId,@Param("roleIdList")List<Integer> roleIdList);
+    
+    
 }
